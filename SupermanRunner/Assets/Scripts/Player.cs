@@ -17,4 +17,10 @@ public class Player : MonoBehaviour {
 			transform.position = esquerda;
 		}
 	}
+
+	void OnTriggerEnter2D(Collider2D coll) {
+		if (coll.gameObject.tag == "enemy")
+			Destroy(this.gameObject);
+	}
+
 }
