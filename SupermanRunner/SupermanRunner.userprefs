@@ -1,9 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Player.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Criptonita.cs">
     <Files>
-      <File FileName="Assets\Scripts\SpawInimigos.cs" Line="38" Column="3" />
-      <File FileName="Assets\Scripts\Player.cs" Line="12" Column="36" />
+      <File FileName="Assets\Scripts\Criptonita.cs" Line="15" Column="3" />
+      <File FileName="Assets\Scripts\Player.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SpawInimigos.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
