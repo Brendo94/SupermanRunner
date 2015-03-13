@@ -3,47 +3,70 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject txtStart;
-    public TextMesh playerScore;
-    public TextMesh computerScore;
-
-    private int _playerScore;
-    private int _computerScore;
-
-    private bool _isAlive;
+    public TextMesh score;
+    public TextMesh hiScore;
+    private int _score, _hiScore;
+    private AudioSource[] _sfx;
+    private const int Point = 0, BGM = 1;
+    private bool _isPaused;
 
     // Use this for initialization
     void Start()
     {
-        _isAlive = false;
-        Time.timeScale = 0f;
+        _isPaused = false;
+        Time.timeScale = 1f;
+        _hiScore = PlayerPrefs.GetInt("ufc_hiscore", 0);
+        hiScore.text = "" + _hiScore;
+
+        _sfx = GetComponents<AudioSource>();
+        _sfx[BGM].Play();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!_isAlive)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                txtStart.SetActive(false);
-                Time.timeScale = 1f;
-                _isAlive = true;
-            }
+            if (_isPaused)
+                Application.LoadLevel("Title");
+            else
+                PauseContinue();
         }
+
+        if (_isPaused)
+            if (Input.GetMouseButtonDown(0))
+                PauseContinue();
     }
 
-    void UpdateScore(string tag)
+    void PauseContinue()
     {
-        if (tag.Equals("LWall"))
+        // continue
+        if (_isPaused)
         {
-            _computerScore++;
-            computerScore.text = "" + _computerScore;
+            _isPaused = false;
+            Time.timeScale = 1f;
+            _sfx[BGM].Play();
         }
-        else if (tag.Equals("RWall"))
+        // pausa
+        else
         {
-            _playerScore++;
-            playerScore.text = "" + _playerScore;
+            _isPaused = true;
+            Time.timeScale = 0f;
+            _sfx[BGM].Pause();
         }
+    }
+    
+    void PlayerScored()
+    {
+        _sfx[Point].Play();
+
+        if (++_score > _hiScore)
+        {
+            _hiScore = _score;
+            hiScore.text = "" + _hiScore;
+            PlayerPrefs.SetInt("ufc_hiscore", _hiScore);
+            PlayerPrefs.Save();
+        }
+        score.text = "" + _score;
     }
 }
