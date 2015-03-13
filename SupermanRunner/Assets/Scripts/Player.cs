@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using System.Collections;
 
@@ -22,7 +23,7 @@ public class Player : MonoBehaviour {
 			Destroy (this.gameObject);
 		}
 	}
-
+	
 	void OnTriggerEnter2D(Collider2D coll) {
 		if (coll.gameObject.tag == "enemy") {
 			vida = vida - 1;
@@ -30,5 +31,5 @@ public class Player : MonoBehaviour {
 			//Application.loadLevel();
 		}
 	}
-
+	
 }
