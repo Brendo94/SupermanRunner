@@ -26,9 +26,9 @@ public class Criptonita : MonoBehaviour {
 				GameObject nome = GameObject.Instantiate(mini_Crip) as GameObject;
 				nome.transform.position = this.gameObject.transform.position;
 				if(cont%2==0) {
-					nome.rigidbody2D.AddForce(new Vector2(Random.value*1000,Random.value*1000));
+					nome.GetComponent<Rigidbody2D>().AddForce(new Vector2(Random.value*1000,Random.value*1000));
 				} else {
-					nome.rigidbody2D.AddForce(new Vector2(-Random.value*1000,Random.value*1000));
+					nome.GetComponent<Rigidbody2D>().AddForce(new Vector2(-Random.value*1000,Random.value*1000));
 				}
 
 

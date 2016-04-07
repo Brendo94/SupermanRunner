@@ -24,13 +24,13 @@ public class SpawInimigos : MonoBehaviour {
         {
 			GameObject nome = GameObject.Instantiate(criptonita) as GameObject;
 			nome.transform.position = posicao1.transform.position;
-			nome.rigidbody2D.AddForce(-Vector2.up);
+			nome.GetComponent<Rigidbody2D>().AddForce(-Vector2.up);
         }
         else
         {
 			GameObject nome = GameObject.Instantiate(criptonita) as GameObject;
 			nome.transform.position = posicao2.transform.position;
-			nome.rigidbody2D.AddForce(-Vector2.up);
+			nome.GetComponent<Rigidbody2D>().AddForce(-Vector2.up);
         }
 
 

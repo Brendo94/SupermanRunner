@@ -8,7 +8,7 @@ public class BallController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        rigidbody2D.AddForce(new Vector2(300, 150));
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(300, 150));
         _manager = GameObject.FindGameObjectWithTag("GManager");
     }
 
